@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- Injecting using Annotations -->
+
+	<!-- This time The Spring uses Setter to inject the Object without autowiring -->
+
+	<!-- <context:annotation-config> is used to activate autowiring -->
+	<context:annotation-config></context:annotation-config>
+
+	<bean id="tigerHeart"
+		class="com.bridgelabz.autowiringprograms.model.AnimalHeart">
+		<property name="nameOfAnimal" value="Tiger"></property>
+		<property name="noOfHearts" value="1"></property>
+	</bean>
+	
+	<!-- We are defining properties here because for primitive types na sstring 
+		types Autowiring is not possible. Autowiring is only possible for the object 
+		Only Because spring cannot know my data that i wanted to enter eg. ny rollno, 
+		ny name etc -->
+		
+	<bean id="octopusHeart"
+		class="com.bridgelabz.autowiringprograms.model.AnimalHeart">
+		<property name="nameOfAnimal" value="Octopus"></property>
+		<property name="noOfHearts" value="2"></property>
+	</bean>
+
+	<!-- Using above 2 beans it will give you error because first of all spring 
+		is going to resolve it using byType but in above operation there are 2 beans 
+		with same type so it will go with byName but it is also not matching with 
+		byName -->
+
+	<bean id="animal"
+		class="com.bridgelabz.autowiringprograms.model.Animal">
+
+		<!-- Injecting using Setter method by defing @Autowires before the setter 
+			method -->
+
+		<!-- Using setter injection it is frist goint to check with byType and 
+			if it is fail then it will resolve it using byName -->
+	</bean>
+</beans>

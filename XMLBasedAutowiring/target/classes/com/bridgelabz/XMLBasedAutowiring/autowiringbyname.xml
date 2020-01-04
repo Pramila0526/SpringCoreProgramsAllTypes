@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- Injecting using ByName AutoWiring -->
+	<!-- AutoWiring means automatically wire up the dependency -->
+
+	<!-- Reference Variable name and id should be same i.e. Heart heart; & <bean id="heart" -->
+	
+	<bean id="heart"
+		class="com.bridgelabz.xmlbasedautowiring.model.Heart"></bean>
+
+	<bean id="human"
+		class="com.bridgelabz.xmlbasedautowiring.model.Human"
+		autowire="byName">
+
+		<!-- For this human object we are telling the spring that you dont wait 
+			for me to configure it, you only inject the object to that particular reference 
+			(eg class human{ Heart heart;), you only give object like new Heart() -->
+
+		<!-- When you are going with byName Approach you have to take care only 
+			one thing that in the class Human{ Heart heart(Name Of Dependency) Dependency 
+			name/variable name sholud be same as the heart object name i.e. you are injected 
+			the object/you are creating new heart() -->
+
+		<!-- Whwnever Spring is going to create a bject of human class at that 
+			time it will see tha command autowir="byName" and it ifollows autowiring 
+			byName -->
+
+		<!-- Setter Method is also Going to call byName without any property
+			Internally 
+			Human human=new 
+			Human(); human.start(new Heart()) -->
+
+	</bean>
+
+</beans>

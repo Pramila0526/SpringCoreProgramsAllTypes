@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- Injecting using Annotations -->
+
+	<!-- This time The Spring uses Constructor to inject the Object without autowiring-->
+	
+	<!-- <context:annotation-config> is used to activate autowiring -->
+	<context:annotation-config></context:annotation-config>
+	
+	<bean id="heartObject"
+		class="com.bridgelabz.autowiringprograms.model.Heart"></bean>
+
+	<bean id="human"
+		class="com.bridgelabz.autowiringprograms.model.Human">
+		
+		<!-- First of it will give you error because Spring is not using your constructor 
+			which is human(Heart heart), instead it is using the default human() Constructor 
+			to create human class Object.-->
+			
+		<!-- Whenever you are creating human object and if it is looking for default constructor 
+			and we dont have it in our class so our job is to craete a default constructor -->
+			
+		<!-- After Making Default Constructor
+			
+			Now Spring is able to create the human object by using default constructor.
+			But it is not able to inject our dependency i.e Heart Object.
+			So we are getting output as "Dead"  because By default the autowire is OFF 
+			we need to manually activate it/ON to use 
+			we can activate it by using <context:annotation-config>-->
+			
+	</bean>
+</beans>

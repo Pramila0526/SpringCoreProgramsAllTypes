@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+default-init-method="init"
+default-destroy-method="destroy">
+
+	<context:annotation-config></context:annotation-config>
+
+	<bean id="studentDao"
+		class="com.bridgelabz.springbeanlifecycle.dao.StudentDao"
+		init-method="init" destroy-method="destory">
+		<property name="driver" value="com.mysql.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/employee"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+<bean id="hello" class="com.bridgelabz.springbeanlifecycle.dao.Hello"></bean>
+</beans>
+
+<!-- We can use this also if we are not using <context:annotation-config> 
+		<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean> -->
+
+<!-- we can do PostConstruct and PreDestroy without annotation and with only xml as follow 
+	<bean id="studentDao" class="com.bridgelabz.springbeanlifecycle.dao.StudentDao" 
+	init-method="init" destroy-method="destory"> 
+-->
